@@ -62,7 +62,7 @@ ARCHITECTURE structural OF lab3 IS
     		  LEDG : OUT STD_LOGIC_VECTOR(1 downto 0)	
       	);		
 		end component;
-
+ 
    SIGNAL fast_clock, slow_clock, resetb : STD_LOGIC;
 	SIGNAL load_pcard1, load_pcard2, load_pcard3: STD_LOGIC;
 	SIGNAL load_dcard1, load_dcard2, load_dcard3 : STD_LOGIC;

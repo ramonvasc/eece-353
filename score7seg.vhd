@@ -32,10 +32,8 @@ BEGIN
 		-- Just to remember: the 7-segment display is "active low"
 		
 		-- after reset, both dealer and player scores go to '0'		
-		IF resetb =  '0' THEN
-			seg7 <= "0000001";
-		END IF;
-		
+		process(score)
+		begin
 		-- Transfer the final scores to SEG7
 		case score  is
 			when "0000" => seg7 <= "0000001"; -- 0
@@ -51,5 +49,5 @@ BEGIN
 			when others => seg7 <= "0000001"; -- 0 (in case a invalid value comes through 'score')
 		end case;
 		
-		
+		end process;
 END;

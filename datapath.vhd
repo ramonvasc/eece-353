@@ -34,26 +34,26 @@ END datapath;
 ARCHITECTURE mixed OF datapath IS
 signal pcard1,pcard2,pcard3,dcard1,dcard2,dcard3 : STD_LOGIC_VECTOR (3 downto 0);
 
-+	component card7seg is
-+		      PORT(
-+	      	   card : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);  -- score (0 to 9)
-+					seg7 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)   -- top seg 'a' = bit0, proceed clockwise
-+		    	    );		
-+	   	end component;
-+			
-+			component score7seg is
-+		      PORT(
-+	      	   score : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);  -- score (0 to 9)
-+					seg7 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)   -- top seg 'a' = bit0, proceed clockwise 
-+		    	    );		
-+	   	end component;
-+			
-+			component scorehand is
-+		      PORT(
-+	      	   card1, card2, card3 : IN STD_LOGIC_VECTOR(3 downto 0);
-+					total : OUT STD_LOGIC_VECTOR( 3 DOWNTO 0)  -- total value of hand
-+		    	    );		
-+	   	end component;
+	component card7seg is
+		      PORT(
+	      	   card : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);  -- score (0 to 9)
+					seg7 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)   -- top seg 'a' = bit0, proceed clockwise
+		    	    );		
+	   	end component;
+			
+			component score7seg is
+		      PORT(
+	      	   score : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);  -- score (0 to 9)
+					seg7 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)   -- top seg 'a' = bit0, proceed clockwise 
+		    	    );		
+	   	end component;
+			
+			component scorehand is
+		      PORT(
+	      	   card1, card2, card3 : IN STD_LOGIC_VECTOR(3 downto 0);
+					total : OUT STD_LOGIC_VECTOR( 3 DOWNTO 0)  -- total value of hand
+		    	    );		
+	   	end component;
 
 
 begin

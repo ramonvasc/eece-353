@@ -33,8 +33,49 @@ END datapath;
 
 ARCHITECTURE mixed OF datapath IS
 signal pcard1,pcard2,pcard3,dcard1,dcard2,dcard3 : STD_LOGIC_VECTOR (3 downto 0);
+
 begin
     -- Your code goes here
+    			-- components ports declarations
+    	-- The port maps
+	 	c7sp1 : card7seg PORT MAP (
+	   pcard1 => card,
+		HEX0 => seg7);
+		
+		c7sp2 : card7seg PORT MAP (
+	   pcard2 => card,
+		HEX1 => seg7);
+		
+		c7sp3 : card7seg PORT MAP (
+	   pcard3 => card,
+		HEX2 => seg7);
+		
+		c7sd1 : card7seg PORT MAP (
+	   dcard1 => card,
+		HEX4 => seg7);
+		
+		c7sd2 : card7seg PORT MAP (
+	   dcard2 => card,
+		HEX5 => seg7);
+		
+		c7sd3 : card7seg PORT MAP (
+	   dcard3 => card,
+		HEX6 => seg7);
+		
+		ps7s : score7seg PORT MAP (
+	   score => total,
+		HEX3 => seg7);
+		
+		ds7s : score7seg PORT MAP (
+	   score => total,
+		HEX7 => seg7);
+	
+		sr : scorehand PORT MAP ( -- corrigir!!
+	   card1 => card1,
+		card2 => card2,
+		card3 => card3,
+		total => total);
+
 	process (resetb,slow_clock)
 	begin
 	if (resetb = '0') then

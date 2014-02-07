@@ -11,9 +11,33 @@ END scorehand;
 
 
 ARCHITECTURE behavioral OF scorehand IS
-
 BEGIN
 
 -- Your code goes here.
-
+	process(card1,card2,card3)
+	variable c1 : unsigned (3 downto 0);
+	variable c2 : unsigned (3 downto 0);
+	variable c3 : unsigned (3 downto 0);
+	variable score : unsigned (4 downto 0);
+	begin
+		if(card1 = "1010" or card1 = "1011" or card1 = "1100" or card1 = "1101") then
+		c1 := "0000";
+		else
+		c1 := unsigned(card1);
+		end if;
+		if(card2 = "1010" or card2 = "1011" or card2 = "1100" or card2 = "1101") then
+		c2 := "0000";
+		else
+		c2 := unsigned(card2);
+		end if;
+		if(card3 = "1010" or card3 = "1011" or card3 = "1100" or card3 = "1101") then
+		c3 := "0000";
+		else
+		c3 := unsigned(card3);
+		end if;
+		
+		score := (c1 + c2 + c3) mod 10;
+		total <= std_logic_vector(score);
+	end process;
+	
 END;

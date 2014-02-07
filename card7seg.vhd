@@ -33,7 +33,8 @@ BEGIN
 			when "1010" => inv <= "1000000"; --10
 			when "1011" => inv <= "1110001"; --J
 			when "1100" => inv <= "0011000"; --Q
-			when others => inv <= "0001001"; --H
+			when "1101" => inv <= "0001001"; --H
+			when others => inv <= "1111111";
 		end case;
 		end process;
 		

@@ -16,6 +16,7 @@ ENTITY lab3 IS
       CLOCK_50 : IN STD_LOGIC; -- the fast clock for clocking deal_hand
 		KEY : IN STD_LOGIC_VECTOR(3 downto 0);  -- includes slow_clock and reset
 
+		LEDR : out std_logic_vector (17 downto 0);
 		LEDG : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);  -- ledg
 		HEX7 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);  -- digit 7
 		HEX6 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);  -- digit 6
@@ -47,7 +48,8 @@ ARCHITECTURE structural OF lab3 IS
 		      HEX3 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);  -- digit 3
 		      HEX2 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);  -- digit 2
 		      HEX1 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);  -- digit 1
-		      HEX0 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)   -- digit 0
+		      HEX0 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);   -- digit 0
+				LEDR :OUT STD_LOGIC_VECTOR(17 DOWNTO 10)
 	      );		
    	end component;
  
@@ -58,7 +60,8 @@ ARCHITECTURE structural OF lab3 IS
        	  dscore, pscore : IN STD_LOGIC_VECTOR(3 downto 0);
 		     pcard3 : IN STD_LOGIC_VECTOR(3 downto 0);
    		  load_pcard1, load_pcard2, load_pcard3 : OUT STD_LOGIC;
-		     load_dcard1, load_dcard2, load_dcard3 : OUT STD_LOGIC;		
+		     load_dcard1, load_dcard2, load_dcard3 : OUT STD_LOGIC;
+			  LEDR : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
     		  LEDG : OUT STD_LOGIC_VECTOR(1 downto 0)	
       	);		
 		end component;
@@ -94,7 +97,8 @@ BEGIN
 		HEX3 => HEX3,
 		HEX2 => HEX2,
 		HEX1 => HEX1,
-		HEX0 => HEX0 );		
+		HEX0 => HEX0,
+		LEDR(17 downto 10) => LEDR(17 downto 10));		
 	      
 	sm : statemachine PORT MAP (
 	   slow_clock => slow_clock,
@@ -108,6 +112,7 @@ BEGIN
 		load_dcard1 => load_dcard1,
 		load_dcard2 => load_dcard2,
 		load_dcard3 => load_dcard3,
+		LEDR(9 downto 0) => LEDR(9 downto 0),
       LEDG => LEDG);		
 	
 END;

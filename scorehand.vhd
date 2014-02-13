@@ -18,7 +18,7 @@ BEGIN
 	variable c1 : unsigned (3 downto 0);
 	variable c2 : unsigned (3 downto 0);
 	variable c3 : unsigned (3 downto 0);
-	variable score : unsigned (4 downto 0);
+	variable score : unsigned (3 downto 0);
 	begin
 		if(card1 = "1010" or card1 = "1011" or card1 = "1100" or card1 = "1101") then
 		c1 := "0000";

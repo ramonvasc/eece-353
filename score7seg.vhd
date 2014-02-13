@@ -36,7 +36,7 @@ BEGIN
 		begin
 		-- Transfer the final scores to SEG7
 		case score  is
-			when "0000" => seg7 <= "0000001"; -- 0
+			when "0000" => seg7 <= "1000000"; -- 0
 			when "0001" => seg7 <= "1111001"; -- 1
 			when "0010" => seg7 <= "0100100"; -- 2
 			when "0011" => seg7 <= "0110000"; -- 3

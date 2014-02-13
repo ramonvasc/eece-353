@@ -36,7 +36,7 @@ BEGIN
 		c3 := unsigned(card3);
 		end if;
 		
-		score := ((('0' & c1) + ('0' & c2) + ('0' & c3)) mod 10);
+		score := (('0' & c1) + ('0' & c2) + ('0' & c3)) mod 10;
 		total <= std_logic_vector(score(3 downto 0));
 	end process;
 	

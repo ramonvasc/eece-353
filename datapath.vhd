@@ -17,7 +17,7 @@ ENTITY datapath IS
 		
 		dscore_out, pscore_out : out STD_LOGIC_VECTOR(3 downto 0);
 		pcard3_out	: out STD_LOGIC_VECTOR(3 downto 0);
-		LEDR : OUT STD_LOGIC_VECTOR(17 DOWNTO 10);
+		LEDR : OUT STD_LOGIC_VECTOR(17 DOWNTO 11);
 		
 		HEX7 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);  -- digit 7
 		HEX6 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);  -- digit 6
@@ -126,7 +126,7 @@ begin
 		dcard1 <= "0000";
 		dcard2 <= "0000";
 		dcard3 <= "0000";
-		LEDR(17 DOWNTO 10) <= "00000000";
+		LEDR(17 DOWNTO 11) <= "0000000";
 	elsif (slow_clock'event and slow_clock = '0') then
 		if(load_dcard1 = '1') then
 		dcard1 <= new_card;

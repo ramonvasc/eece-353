@@ -19,7 +19,7 @@ ENTITY statemachine IS
 		load_pcard1, load_pcard2, load_pcard3 : OUT STD_LOGIC := '0';
 		load_dcard1, load_dcard2, load_dcard3 : OUT STD_LOGIC := '0';
 		
-  		LEDR : out std_logic_vector (9 downto 0);
+  		LEDR : out std_logic_vector (10 downto 0);
 		LEDG : OUT STD_LOGIC_VECTOR(1 downto 0)	
 	);
 END statemachine;
@@ -42,7 +42,7 @@ begin
 		load_pcard1 <= '0';
 		load_pcard2 <= '0';
 		load_pcard3 <= '0';
-		LEDR <= "0000000000";
+		LEDR <= "00000000000";
 	elsif (slow_clock'event and slow_clock = '0') then
 		load_dcard1 <= '0';
 		load_dcard2 <= '0';
@@ -119,20 +119,25 @@ begin
 					end if;		
 					LEDR (8) <= '1';
 			when "1001" => 
-					if(unsigned(dscore) = 8 or unsigned(dscore) = 9) then --natural victory
+					if(unsigned(pscore) >= 8) then --player natural victory
 						present_state <= "0100";
-					elsif(unsigned(pscore) = 8 or unsigned(pscore) = 9) then --natural victory
-						present_state <= "0100";	
 					else
 						present_state <= "1010";
 					end if;		
 					LEDR(9) <= '1';
-			when "1010" =>
+			when "1010" => 
+					if(unsigned(dscore) >= 8) then --dealer natural victory
+						present_state <= "0100";
+					else
+						present_state <= "1011"; 
+					end if;			
+			when "1011" =>
 					if(unsigned(pscore) >= 0 and unsigned(pscore) <= 5) then -- player has between 0 and 5
 						present_state <= "0101";
 					elsif(unsigned(pscore) = 6 or unsigned(pscore) = 7) then --player has 6 or 7
 						present_state <= "0110";
 					end if;	
+					LEDR(10) <= '1';
 			when others => present_state <="0000";
 			end case;
 			--LEDR(17 DOWNTO 14) <= dscore;

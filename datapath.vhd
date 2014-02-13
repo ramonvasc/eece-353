@@ -97,17 +97,17 @@ begin
 	   card => dcard3,
 		seg7 => HEX6);
 		
-		dscore : scorehand PORT MAP (
+		pscore : scorehand PORT MAP (
 		card1 => pcard1,
 		card2 => pcard2,
 		card3 => pcard3,
-		total => dscore_signal);
+		total => pscore_signal);
 		
-		pscore : scorehand PORT MAP (
+		dscore : scorehand PORT MAP (
 		card1 => dcard1,
 		card2 => dcard2,
 		card3 => dcard3,
-		total => pscore_signal);
+		total => dscore_signal);
 		
 		ps7s : score7seg PORT MAP (
 	   score => pscore_signal,
@@ -126,21 +126,37 @@ begin
 		dcard1 <= "0000";
 		dcard2 <= "0000";
 		dcard3 <= "0000";
+		LEDR(17 DOWNTO 10) <= "00000000";
 	elsif (slow_clock'event and slow_clock = '0') then
 		if(load_dcard1 = '1') then
 		dcard1 <= new_card;
-		LEDR (17 DOWNTO 14) <= NEW_card;
-		elsif(load_dcard2 = '1') then
+		LEDR(17) <= '1';
+		--LEDR (17 DOWNTO 14) <= dcard1;
+		end if;
+		if(load_dcard2 = '1') then
 		dcard2 <= new_card;
-		elsif(load_dcard3 = '1') then
+		LEDR(16) <= '1';
+		end if;
+		--LEDR (17 DOWNTO 14) <= dcard2;
+		if(load_dcard3 = '1') then
 		dcard3 <= new_card;
-		elsif(load_pcard1 = '1') then
+		LEDR(15) <= '1';
+		end if;
+		--LEDR (17 DOWNTO 14) <= dcard3;
+		if(load_pcard1 = '1') then
 		pcard1 <= new_card;
-		LEDR (13 DOWNTO 10) <= NEW_card;
-		elsif(load_pcard2 = '1') then
+		LEDR(14) <= '1';
+		--LEDR (13 DOWNTO 10) <= pcard1;
+		end if;
+		if(load_pcard2 = '1') then
 		pcard2 <= new_card;
-		else 
+		LEDR(13) <= '1';
+		--LEDR (13 DOWNTO 10) <= pcard2;
+		end if;
+		if(load_pcard3 = '1') then 
 		pcard3 <= new_card;
+		LEDR(12) <= '1';
+		--LEDR (13 DOWNTO 10) <= pcard3;
 		end if;
 	end if;
 	

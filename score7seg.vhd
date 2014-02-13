@@ -46,7 +46,7 @@ BEGIN
 			when "0111" => seg7 <= "1111000"; -- 7
 			when "1000" => seg7 <= "0000000"; -- 8
 			when "1001" => seg7 <= "0010000"; -- 9
-			when others => seg7 <= "0000001"; -- 0 (in case a invalid value comes through 'score')
+			when others => seg7 <= "1000000"; -- 0 (in case a invalid value comes through 'score')
 		end case;
 		
 		end process;

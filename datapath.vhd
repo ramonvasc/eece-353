@@ -92,11 +92,18 @@ begin
 	   score => total,
 		HEX7 => seg7);
 	
-		sr : scorehand PORT MAP ( -- corrigir!!
-	   card1 => card1,
-		card2 => card2,
-		card3 => card3,
-		total => total);
+		dscore : scorehand PORT MAP (
+		pcard1 => card1,
+		pcard2 => card2,
+		pcard3 => card3,
+		dscore_out => total);
+		
+		pscore : scorehand PORT MAP (
+		dcard1 => card1,
+		dcard2 => card2,
+		dcard3 => card3,
+		pscore_out => total);
+
 
 	process (resetb,slow_clock)
 	begin
